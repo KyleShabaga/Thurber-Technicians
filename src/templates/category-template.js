@@ -29,7 +29,7 @@ const CategoryTemplate = ({ data, location }) => (
     <Container>
       <Row className="mt-5">
         <Col md="auto">
-          <SideTOC 
+          <SideTOC
             categorySlug={data.category.slug}
             categoryTitle={data.category.title}
             categoryPosts={data.category.post}
@@ -55,27 +55,27 @@ export default CategoryTemplate
 
 //-----------------------------
 
-{
-  /* <div className="article-toc">
-<ul className="toc">
-  <li className="toc-header">
-    <Link to={`/doc/${data.category.slug}`}>
-      {data.category.title}
-    </Link>
-  </li>
-  <li>
-    <ul className="toc-ul">
-      {data.category.post.map(categoryTitles => (
-        <Link
-          to={`/doc/${data.category.slug}/${categoryTitles.slug}`}
-          activeClassName="toc-active"
-          partiallyActive={true}
-        >
-          <li className="toc-content">{categoryTitles.title}</li>
-        </Link>
-      ))}
-    </ul>
-  </li>
-</ul>
-</div> */
-}
+//
+//   /* <div className="article-toc">
+// <ul className="toc">
+//   <li className="toc-header">
+//     <Link to={`/doc/${data.category.slug}`}>
+//       {data.category.title}
+//     </Link>
+//   </li>
+//   <li>
+//     <ul className="toc-ul">
+//       {data.category.post.map(categoryTitles => (
+//         <Link
+//           to={`/doc/${data.category.slug}/${categoryTitles.slug}`}
+//           activeClassName="toc-active"
+//           partiallyActive={true}
+//         >
+//           <li className="toc-content">{categoryTitles.title}</li>
+//         </Link>
+//       ))}
+//     </ul>
+//   </li>
+// </ul>
+// </div> */
+//

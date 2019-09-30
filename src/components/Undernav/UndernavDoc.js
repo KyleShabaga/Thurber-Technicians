@@ -3,17 +3,6 @@ import { Nav, Navbar } from "react-bootstrap"
 import { Link } from "gatsby"
 import "./undernavdoc.css"
 
-// const location = () => {
-//   const currentLocation = window.location.href
-//   let newLocation = currentLocation.replace("http://localhost:8000/", "")
-//   if (!newLocation || newLocation === undefined) {
-//     return "Technician Portal"
-//   } else {
-//     const capitalized = newLocation.replace(/^./, newLocation[0].toUpperCase())
-//     const finishedString = capitalized.replace(/-/g, " ")
-//     return finishedString
-//   }
-// }
 
 const UnderNavDoc = () => {
   return (
