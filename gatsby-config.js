@@ -1,4 +1,3 @@
-
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
@@ -49,5 +48,12 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: "gatsby-plugin-sentry",
+      options: {
+        dsn: "https://01756317d7884f139dd14f220da1382f@sentry.io/1766362",
+        // Optional settings, see https://docs.sentry.io/clients/node/config/#optional-settings
+      },
+    },
   ],
 }
