@@ -1,0 +1,17 @@
+.table__container {
+  width: 100vw;
+  min-width: 400px;
+  justify-content: center;
+}
+
+.table__row {
+  display: flex;
+  justify-content: center;
+  margin: auto auto;
+  
+}
+
+.table__main {
+  justify-self: center;
+  margin: 0 0;
+}

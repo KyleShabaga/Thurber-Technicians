@@ -1,0 +1,13 @@
+.post__container {
+  max-width: 753px;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 1rem;
+  flex-grow: 1;
+  transition: border 0.2s ease-in-out;
+}
+
+.post__container:hover {
+  border: 1px solid cornflowerblue;
+}

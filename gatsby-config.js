@@ -1,11 +1,29 @@
+const queries = require("./src/components/utils/algolia")
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Thurber Technicians`,
+    description: `Find everything you need to know here!`,
+    author: `Kyle Shabaga`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: "htf1458uiy4r",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`Open Sans`, `Roboto`],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -24,11 +42,21 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
+    `gatsby-plugin-styled-components`,
   ],
 }
