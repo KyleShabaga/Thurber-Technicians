@@ -3,8 +3,12 @@ import Document from "../components/document/index"
 import SEO from "../components/seo"
 import Layout from "../layouts/index"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
-import SearchBox from "../components/searchbox/SearchBox"
 import { Container } from "react-bootstrap"
+import Search from '../components/search'
+
+const searchIndices = [
+  { name: `Posts`, title: `Documentation`, hitComp: `PostHit` },
+]
 
 
 const Documentation = ({location}) => (
@@ -12,7 +16,8 @@ const Documentation = ({location}) => (
   <Layout location={location}>
     <UnderNavDoc />
     <SEO title="Documentation" />
-    <SearchBox />
+    <Search collapse indices={searchIndices} />
+    
     <Container>
       <Document />
     </Container>

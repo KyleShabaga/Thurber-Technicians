@@ -3,6 +3,7 @@ const categoryQuery = `{
     edges {
       node {
         title
+        slug
         post {
           title
         }
@@ -16,8 +17,13 @@ const postQuery = `{
   posts: allContentfulPost {
     edges {
       node {
+        slug
         title
         shortDescription
+        category {
+          title
+          slug
+        }
       }
     }
   }

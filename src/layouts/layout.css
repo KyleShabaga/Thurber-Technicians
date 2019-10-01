@@ -15,6 +15,7 @@ body {
   box-shadow: 0 1px 3px -6px black;
   width: 100vw;
   z-index: 100;
+  background: white;
 }
 
 .card-border {
@@ -105,3 +106,7 @@ ol.breadcrumb {
   color: #192532;
 }
 
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}

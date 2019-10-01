@@ -10,6 +10,8 @@ import algoliasearch from "algoliasearch/lite"
 import { Root, HitsWrapper, PoweredBy } from "./styles"
 import Input from "./Input"
 import * as hitComps from "./hitComps"
+import "./index.css"
+import { Container, Row } from "react-bootstrap"
 
 const Results = connectStateResults(
   ({ searchState: state, searchResults: res, children }) =>
@@ -45,27 +47,30 @@ export default function Search({ indices, collapse, hitsAsGrid }) {
   )
   useClickOutside(ref, () => setFocus(false))
   return (
-    <InstantSearch
-      searchClient={searchClient}
-      indexName={indices[0].name}
-      onSearchStateChange={({ query }) => setQuery(query)}
-      root={{ Root, props: { ref } }}
-    >
-      <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
-      <HitsWrapper show={query.length > 0 && focus} asGrid={hitsAsGrid}>
-        {indices.map(({ name, title, hitComp }) => (
-          <Index key={name} indexName={name}>
-            <header>
-              <h3>{title}</h3>
-              <Stats />
-            </header>
-            <Results>
-              <Hits hitComponent={hitComps[hitComp](() => setFocus(false))} />
-            </Results>
-          </Index>
-        ))}
-        <PoweredBy />
-      </HitsWrapper>
-    </InstantSearch>
+    <Container>
+      <Row className="justify-content-center">
+        <InstantSearch
+          searchClient={searchClient}
+          indexName={indices[0].name}
+          onSearchStateChange={({ query }) => setQuery(query)}
+          root={{ Root, props: { ref } }}
+        >
+          <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
+
+          <HitsWrapper show={query.length > 0 && focus} asGrid={hitsAsGrid}>
+            {indices.map(({ name, hitComp }) => (
+              <Index key={name} indexName={name}>
+                <Results>
+                  <Hits
+                    hitComponent={hitComps[hitComp](() => setFocus(false))}
+                  />
+                </Results>
+              </Index>
+            ))}
+            <PoweredBy />
+          </HitsWrapper>
+        </InstantSearch>
+      </Row>
+    </Container>
   )
 }
