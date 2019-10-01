@@ -11,3 +11,8 @@
 .post__container:hover {
   border: 1px solid cornflowerblue;
 }
+
+.posthit__container {
+  padding: 1rem;
+  margin: 1rem;
+}

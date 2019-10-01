@@ -1,6 +1,6 @@
 import React from "react"
 import SEO from "../components/seo"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Container, Row, Col } from "react-bootstrap"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
@@ -117,27 +117,3 @@ const PostTemplate = ({ data: { post }, location }) => (
 )
 
 export default PostTemplate
-
-
-//-------------------------------
-{/* <div className="article-toc">
-<ul className="toc">
-  <li className="toc-header">
-    <Link to={`/doc/${post.category.slug}`}>
-      {post.category.title}
-    </Link>
-  </li>
-  <li>
-    <ul className="toc-ul">
-      {post.category.post.map(categoryTitles => (
-        <Link
-          to={`/doc/${post.category.slug}/${categoryTitles.slug}`}
-          activeClassName="toc-active"
-        >
-          <li className="toc-content">{categoryTitles.title}</li>
-        </Link>
-      ))}
-    </ul>
-  </li>
-</ul>
-</div> */}
