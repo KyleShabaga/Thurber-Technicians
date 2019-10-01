@@ -9,7 +9,7 @@ import Layout from "../layouts/index"
 import BreadCrumb from "../components/breadcrumb/breadcrumb"
 import InlineEmbeddedEntry from "../components/inlineEmbeddedEntry"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
-import SideTOC from '../components/SideTOC/sideTOC'
+import SideTOC from "../components/SideTOC/sideTOC"
 
 export const query = graphql`
   query($slug: String!) {
@@ -73,6 +73,7 @@ const options = {
           title={node.data.target.fields.title["en-US"]}
           slug={node.data.target.fields.slug["en-US"]}
           description={node.data.target.fields.shortDescription["en-US"]}
+          categorySlug={node.data.target.fields.category["en-US"].fields.slug["en-US"]}
         />
       )
     },
@@ -82,7 +83,7 @@ const options = {
           title={node.data.target.fields.title["en-US"]}
           description={node.data.target.fields.shortDescription["en-US"]}
           slug={node.data.target.fields.slug["en-US"]}
-          // category={node.data.target.fields.slug}
+          categorySlug={node.data.target.fields.category["en-US"].fields.slug["en-US"]}
         />
       )
     },
@@ -94,9 +95,9 @@ const PostTemplate = ({ data: { post }, location }) => (
     <SEO title={post.title} />
     <UnderNavDoc />
     <Container className="mt-5">
-      <Row>
+      <Row className="mb-5">
         <Col md="auto">
-          <SideTOC 
+          <SideTOC
             categorySlug={post.category.slug}
             categoryTitle={post.category.title}
             categoryPosts={post.category.post}
