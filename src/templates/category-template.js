@@ -1,6 +1,6 @@
 import React from "react"
 import SEO from "../components/seo"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Container, Row, Col } from "react-bootstrap"
 import Layout from "../layouts/index"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
@@ -52,30 +52,3 @@ const CategoryTemplate = ({ data, location }) => (
 )
 
 export default CategoryTemplate
-
-//-----------------------------
-
-//
-//   /* <div className="article-toc">
-// <ul className="toc">
-//   <li className="toc-header">
-//     <Link to={`/doc/${data.category.slug}`}>
-//       {data.category.title}
-//     </Link>
-//   </li>
-//   <li>
-//     <ul className="toc-ul">
-//       {data.category.post.map(categoryTitles => (
-//         <Link
-//           to={`/doc/${data.category.slug}/${categoryTitles.slug}`}
-//           activeClassName="toc-active"
-//           partiallyActive={true}
-//         >
-//           <li className="toc-content">{categoryTitles.title}</li>
-//         </Link>
-//       ))}
-//     </ul>
-//   </li>
-// </ul>
-// </div> */
-//
