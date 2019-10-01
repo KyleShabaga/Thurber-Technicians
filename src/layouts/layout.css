@@ -15,7 +15,7 @@ body {
   box-shadow: 0 1px 3px -6px black;
   width: 100vw;
   z-index: 100;
-  background: white;
+  background: #f7f9fa;
 }
 
 .card-border {

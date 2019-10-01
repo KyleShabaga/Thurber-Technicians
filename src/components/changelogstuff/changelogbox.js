@@ -6,7 +6,14 @@ export default () => (
     <Row className="justify-content-center">
       <Col>
         <div className="change__box">
-          <h1>Future Features:</h1>
+          <h1>Newest Feature</h1>
+          <ul>
+            <li>Document Page search is working</li>
+          </ul>
+        </div>
+
+        <div className="change__box">
+          <h2>Future Features</h2>
           <ul>
             <li>Account Creation</li>
             <li>Training and Certification tracking</li>
@@ -14,10 +21,12 @@ export default () => (
             <li>Training Checklists for new hires</li>
           </ul>
         </div>
+
         <div className="change__box">
-          <h1>Newest Feature</h1>
+          <h3>Know Bugs</h3>
           <ul>
-            <li>Document Page search is working</li>
+            <li>Menus when viewed on mobile look wonky</li>
+            <li>Links inside posts arn't going to correct pages</li>
           </ul>
         </div>
       </Col>
