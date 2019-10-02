@@ -26,7 +26,6 @@ export default () => (
           <h3>Know Bugs</h3>
           <ul>
             <li>Menus when viewed on mobile look wonky</li>
-            <li>Links inside posts arn't going to correct pages</li>
           </ul>
         </div>
       </Col>
