@@ -6,7 +6,7 @@ import "./undernavdoc.css"
 
 const UnderNavDoc = () => {
   return (
-    <Navbar expand="md" variant="light" className="underBar">
+    <Navbar expand="md" variant="light" className="underBar d-sm-none d-none d-md-flex">
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto ml-auto">

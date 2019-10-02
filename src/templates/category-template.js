@@ -41,7 +41,7 @@ const CategoryTemplate = ({ data, location }) => (
     <UnderNavDoc />
     <Container>
       <Row className="mt-5">
-        <Col md="auto">
+        <Col md="auto" className='d-sm-none d-none d-md-block'>
           <SideTOC
             categorySlug={data.category.slug}
             categoryTitle={data.category.title}
