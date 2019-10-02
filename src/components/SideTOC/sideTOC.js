@@ -3,6 +3,24 @@ import "./sideTOC.css"
 import { Link } from "gatsby"
 
 export default ({ categorySlug, categoryTitle, categoryPosts }) => {
+
+ function compare(a, b) {
+    const titleA = a.title.toUpperCase(),
+      titleB = b.title.toUpperCase()
+
+    let comparison = 0
+
+    if (titleA > titleB) {
+      comparison = 1
+    } else if (titleA < titleB) {
+      comparison = -1
+    }
+    return comparison
+  }
+
+  const sortedCategorys = categoryPosts.sort(compare)
+
+
   return (
     <div className="article-toc">
       <ul className="toc">
@@ -11,7 +29,7 @@ export default ({ categorySlug, categoryTitle, categoryPosts }) => {
         </li>
         <li>
           <ul className="toc-ul">
-            {categoryPosts.map(postTitles => (
+            {sortedCategorys.map(postTitles => (
               <Link
                 to={`/doc/${categorySlug}/${postTitles.slug}`}
                 activeClassName="toc-active"
