@@ -21,6 +21,19 @@ export const query = graphql`
     }
   }
 `
+function compare(a, b) {
+  const titleA = a.title.toUpperCase(),
+    titleB = b.title.toUpperCase()
+
+  let comparison = 0
+
+  if (titleA > titleB) {
+    comparison = 1
+  } else if (titleA < titleB) {
+    comparison = -1
+  }
+  return comparison
+}
 
 const CategoryTemplate = ({ data, location }) => (
   <Layout location={location}>
@@ -37,7 +50,7 @@ const CategoryTemplate = ({ data, location }) => (
         </Col>
 
         <Col className="justify-content-center">
-          {data.category.post.map(posts => (
+          {data.category.post.sort(compare).map(posts => (
             <PostPreview
               key={posts.id}
               title={posts.title}
