@@ -1,7 +1,7 @@
 import React from "react"
 import SEO from "../components/seo"
 import { graphql } from "gatsby"
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col, Image } from "react-bootstrap"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
 import EmbeddedEntry from "../components/embeddedEntry"
@@ -10,7 +10,7 @@ import BreadCrumb from "../components/breadcrumb/breadcrumb"
 import InlineEmbeddedEntry from "../components/inlineEmbeddedEntry"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import SideTOC from "../components/SideTOC/sideTOC"
-import FileAsset from "../components/fileasset/index"
+import InlineHyperlink from "../components/InlineHyperlink/index"
 
 export const query = graphql`
   query($slug: String!) {
@@ -104,10 +104,20 @@ const options = {
     },
     [BLOCKS.EMBEDDED_ASSET]: node => {
       return (
-        <FileAsset
-          title={node.data.target.fields.file["en-US"].fileName}
-          size={node.data.target.fields.file["en-US"].details.size}
+        <Image
+          thumbnail
+          src={node.data.target.fields.file["en-US"].url}
+          fluid
+          className="mx-auto d-block"
+        />
+      )
+    },
+    [INLINES.ASSET_HYPERLINK]: node => {
+      return (
+        <InlineHyperlink
           url={node.data.target.fields.file["en-US"].url}
+          size={node.data.target.fields.file["en-US"].details.size}
+          title={node.data.target.fields.file["en-US"].fileName}
         />
       )
     },
@@ -118,9 +128,9 @@ const PostTemplate = ({ data: { post }, location }) => (
   <Layout location={location}>
     <SEO title={post.title} />
     <UnderNavDoc />
-    <Container className="mt-5">
+    <Container className="mt-5 mb-2 pb-2">
       <Row className="mb-5">
-        <Col md="auto">
+        <Col md="auto" className='d-sm-none d-none d-md-block'>
           <SideTOC
             categorySlug={post.category.slug}
             categoryTitle={post.category.title}

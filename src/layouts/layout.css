@@ -48,7 +48,21 @@ ol.breadcrumb {
 
 .popup__inline {
   display: inline;
-  
+}
+
+.inline-asset-pdf {
+  border: 1px solid #192532;
+  border-radius: 0;
+  border-left: 3px solid cornflowerblue;
+  transition: all 0.3s ease;
+  box-shadow: 0.5px 1px 3px 0.5px #ccc;
+}
+
+.inline-asset-pdf:hover {
+  border: 1px solid #192532;
+  border-radius: 0;
+  border-left: 3px solid cornflowerblue;
+  transform: scale(1.03);
 }
 
 /* sidebar css */
@@ -60,7 +74,6 @@ ol.breadcrumb {
   font-size: 16px;
   display: flex;
   top: 164px;
-
 }
 
 .toc {
@@ -107,6 +120,6 @@ ol.breadcrumb {
 }
 
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
