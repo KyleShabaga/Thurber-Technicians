@@ -1,6 +1,6 @@
 import React from "react"
 import SEO from "../components/seo"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Container, Row, Col } from "react-bootstrap"
 import Layout from "../layouts/index"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
@@ -21,6 +21,19 @@ export const query = graphql`
     }
   }
 `
+function compare(a, b) {
+  const titleA = a.title.toUpperCase(),
+    titleB = b.title.toUpperCase()
+
+  let comparison = 0
+
+  if (titleA > titleB) {
+    comparison = 1
+  } else if (titleA < titleB) {
+    comparison = -1
+  }
+  return comparison
+}
 
 const CategoryTemplate = ({ data, location }) => (
   <Layout location={location}>
@@ -37,7 +50,7 @@ const CategoryTemplate = ({ data, location }) => (
         </Col>
 
         <Col className="justify-content-center">
-          {data.category.post.map(posts => (
+          {data.category.post.sort(compare).map(posts => (
             <PostPreview
               key={posts.id}
               title={posts.title}
@@ -52,30 +65,3 @@ const CategoryTemplate = ({ data, location }) => (
 )
 
 export default CategoryTemplate
-
-//-----------------------------
-
-//
-//   /* <div className="article-toc">
-// <ul className="toc">
-//   <li className="toc-header">
-//     <Link to={`/doc/${data.category.slug}`}>
-//       {data.category.title}
-//     </Link>
-//   </li>
-//   <li>
-//     <ul className="toc-ul">
-//       {data.category.post.map(categoryTitles => (
-//         <Link
-//           to={`/doc/${data.category.slug}/${categoryTitles.slug}`}
-//           activeClassName="toc-active"
-//           partiallyActive={true}
-//         >
-//           <li className="toc-content">{categoryTitles.title}</li>
-//         </Link>
-//       ))}
-//     </ul>
-//   </li>
-// </ul>
-// </div> */
-//

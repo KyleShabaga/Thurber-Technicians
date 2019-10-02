@@ -2,7 +2,7 @@ import React from "react"
 import { ButtonToolbar, OverlayTrigger, Popover, Button } from "react-bootstrap"
 import { Link } from "gatsby"
 
-const InlineEmbeddedEntry = ({ title, description, slug }) => {
+const InlineEmbeddedEntry = ({ title, description, slug, categorySlug }) => {
   return (
       <ButtonToolbar className='popup__inline'>
         {["top"].map(placement => (
@@ -13,7 +13,7 @@ const InlineEmbeddedEntry = ({ title, description, slug }) => {
             overlay={
               <Popover id={`popover-positioned-${placement}`}>
                 <Popover.Title as="h3">
-                  <Link to={`/${slug}`}>{title}</Link>
+                  <Link to={`/doc/${categorySlug}/${slug}`}>{title}</Link>
                 </Popover.Title>
                 <Popover.Content>{description}</Popover.Content>
               </Popover>

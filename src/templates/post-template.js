@@ -1,6 +1,6 @@
 import React from "react"
 import SEO from "../components/seo"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import { Container, Row, Col } from "react-bootstrap"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import { BLOCKS, INLINES } from "@contentful/rich-text-types"
@@ -9,7 +9,8 @@ import Layout from "../layouts/index"
 import BreadCrumb from "../components/breadcrumb/breadcrumb"
 import InlineEmbeddedEntry from "../components/inlineEmbeddedEntry"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
-import SideTOC from '../components/SideTOC/sideTOC'
+import SideTOC from "../components/SideTOC/sideTOC"
+import FileAsset from "../components/fileasset/index"
 
 export const query = graphql`
   query($slug: String!) {
@@ -38,6 +39,16 @@ export const query = graphql`
                 }
                 shortDescription {
                   en_US
+                }
+                file {
+                  en_US {
+                    contentType
+                    details {
+                      size
+                    }
+                    url
+                    fileName
+                  }
                 }
               }
             }
@@ -73,6 +84,9 @@ const options = {
           title={node.data.target.fields.title["en-US"]}
           slug={node.data.target.fields.slug["en-US"]}
           description={node.data.target.fields.shortDescription["en-US"]}
+          categorySlug={
+            node.data.target.fields.category["en-US"].fields.slug["en-US"]
+          }
         />
       )
     },
@@ -82,7 +96,18 @@ const options = {
           title={node.data.target.fields.title["en-US"]}
           description={node.data.target.fields.shortDescription["en-US"]}
           slug={node.data.target.fields.slug["en-US"]}
-          // category={node.data.target.fields.slug}
+          categorySlug={
+            node.data.target.fields.category["en-US"].fields.slug["en-US"]
+          }
+        />
+      )
+    },
+    [BLOCKS.EMBEDDED_ASSET]: node => {
+      return (
+        <FileAsset
+          title={node.data.target.fields.file["en-US"].fileName}
+          size={node.data.target.fields.file["en-US"].details.size}
+          url={node.data.target.fields.file["en-US"].url}
         />
       )
     },
@@ -94,9 +119,9 @@ const PostTemplate = ({ data: { post }, location }) => (
     <SEO title={post.title} />
     <UnderNavDoc />
     <Container className="mt-5">
-      <Row>
+      <Row className="mb-5">
         <Col md="auto">
-          <SideTOC 
+          <SideTOC
             categorySlug={post.category.slug}
             categoryTitle={post.category.title}
             categoryPosts={post.category.post}
@@ -117,27 +142,3 @@ const PostTemplate = ({ data: { post }, location }) => (
 )
 
 export default PostTemplate
-
-
-//-------------------------------
-{/* <div className="article-toc">
-<ul className="toc">
-  <li className="toc-header">
-    <Link to={`/doc/${post.category.slug}`}>
-      {post.category.title}
-    </Link>
-  </li>
-  <li>
-    <ul className="toc-ul">
-      {post.category.post.map(categoryTitles => (
-        <Link
-          to={`/doc/${post.category.slug}/${categoryTitles.slug}`}
-          activeClassName="toc-active"
-        >
-          <li className="toc-content">{categoryTitles.title}</li>
-        </Link>
-      ))}
-    </ul>
-  </li>
-</ul>
-</div> */}
