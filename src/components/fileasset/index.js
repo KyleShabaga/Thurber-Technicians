@@ -1,6 +1,5 @@
 import React from "react"
 import { Card } from "react-bootstrap"
-import { Link } from "gatsby"
 
 const FileAsset = ({ size, title, url }) => {
   function round_to_precision(x, precision) {

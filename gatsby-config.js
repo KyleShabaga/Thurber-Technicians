@@ -65,5 +65,10 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
+    `@reach/router`,
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/account/*`] },
+    },
   ],
 }
