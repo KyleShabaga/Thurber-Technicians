@@ -24,10 +24,8 @@ const Account = () => {
         <Link to="/account/billings">billings</Link>
         <a
           href="#logout"
-          onClick={e => {
+          onClick={() => {
             logout()
-
-            e.preventDefault
           }}
         >
           Logout
