@@ -24,17 +24,19 @@ const auth = isBrowser
   : {}
 
 export const login = () => {
+  if (!isBrowser) {
+    return
+  }
   auth.authorize()
 }
 
 export const logout = () => {
-  tokens.accessToken = false;
-  tokens.idToken = false;
+  tokens.accessToken = false
+  tokens.idToken = false
   user = {}
-  
+
   auth.logout()
 }
-
 
 const setSession = (cb = () => {}) => (err, authResult) => {
   if (err) {
