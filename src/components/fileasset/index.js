@@ -1,7 +1,7 @@
 import React from "react"
 import { Card } from "react-bootstrap"
 
-const FileAsset = ({ size, title, url }) => {
+const FileAsset = ({ size, title, url, contentType }) => {
   function round_to_precision(x, precision) {
     var y = +x + (precision === undefined ? 0.5 : precision / 2)
     return y - (y % (precision === undefined ? 1 : +precision))
@@ -16,6 +16,7 @@ const FileAsset = ({ size, title, url }) => {
   return (
     <Card className="card-border my-4" style={{ width: "12rem" }}>
       <Card.Body>
+        <Card.Img variant="top" src={url} />
         <Card.Title className="pb-2">{title}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">
           Size {sizeMBRound}MB
