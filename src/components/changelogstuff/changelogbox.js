@@ -8,7 +8,7 @@ export default () => (
         <div className="change__box">
           <ul>
             <li>Document Page search is working</li>
-            <li>User auth work in progress</li>
+            <li>User auth added, still work in progress</li>
           </ul>
         </div>
       </Col>

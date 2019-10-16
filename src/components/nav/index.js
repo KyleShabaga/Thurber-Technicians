@@ -5,6 +5,7 @@ import { Navbar, Nav, Button } from "react-bootstrap"
 import { IoIosSearch } from "react-icons/io"
 import {logout} from '../../utils/auth'
 import "./nav.css"
+import Loginsection from './login'
 
 const MainNavbar = () => {
   return (
@@ -73,7 +74,7 @@ const MainNavbar = () => {
           </Nav.Link>
         </Nav>
         <Nav className="">
-          <Nav.Link
+          {/* <Nav.Link
             href="#logout"
             onClick={e => {
               logout()
@@ -81,7 +82,9 @@ const MainNavbar = () => {
             }}
           >
             Log out
-          </Nav.Link>
+          </Nav.Link> */}
+          <Loginsection/>
+
           <Button variant="outline-light" className="pt-0">
             <IoIosSearch />
           </Button>

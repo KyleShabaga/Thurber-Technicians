@@ -51,7 +51,9 @@ const ProjectTable = () => {
         </Col>
       </Row>
       <Row>
-        <Col><h2>Coming Soon: More projects, maps, and other features.</h2></Col>
+        <Col>
+          <h2>Testing projects</h2>
+        </Col>
       </Row>
     </Container>
   )
