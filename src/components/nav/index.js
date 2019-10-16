@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import logo from "../../images/logo.svg"
 import { Navbar, Nav, Button } from "react-bootstrap"
 import { IoIosSearch } from "react-icons/io"
+import {logout} from '../../utils/auth'
 import "./nav.css"
 
 const MainNavbar = () => {
@@ -72,7 +73,15 @@ const MainNavbar = () => {
           </Nav.Link>
         </Nav>
         <Nav className="">
-          <Nav.Link href="/signup">Sign Up</Nav.Link>
+          <Nav.Link
+            href="#logout"
+            onClick={e => {
+              logout()
+              e.preventDefault()
+            }}
+          >
+            Log out
+          </Nav.Link>
           <Button variant="outline-light" className="pt-0">
             <IoIosSearch />
           </Button>

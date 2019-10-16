@@ -6,6 +6,7 @@ import Layout from "../layouts/index"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import SideTOC from "../components/SideTOC/sideTOC"
 import PostPreview from "../components/postpreview/postpreview"
+import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
 
 export const query = graphql`
   query($categoryslug: String!) {
@@ -35,33 +36,42 @@ function compare(a, b) {
   return comparison
 }
 
-const CategoryTemplate = ({ data, location }) => (
-  <Layout location={location}>
-    <SEO title={data.category.title} />
-    <UnderNavDoc />
-    <Container>
-      <Row className="mt-5">
-        <Col md="auto" className='d-sm-none d-none d-md-block'>
-          <SideTOC
-            categorySlug={data.category.slug}
-            categoryTitle={data.category.title}
-            categoryPosts={data.category.post}
-          />
-        </Col>
+const CategoryTemplate = ({ data, location }) => {
+  if (!isAuthenticated()) {
+    login()
+    return <p>Redirecting to login...</p>
+  }
 
-        <Col className="justify-content-center">
-          {data.category.post.sort(compare).map(posts => (
-            <PostPreview
-              key={posts.id}
-              title={posts.title}
-              description={posts.shortDescription}
-              slug={`/doc/${data.category.slug}/${posts.slug}`}
+  const user = getProfile()
+
+  return (
+    <Layout location={location}>
+      <SEO title={data.category.title} />
+      <UnderNavDoc />
+      <Container>
+        <Row className="mt-5">
+          <Col md="auto" className="d-sm-none d-none d-md-block">
+            <SideTOC
+              categorySlug={data.category.slug}
+              categoryTitle={data.category.title}
+              categoryPosts={data.category.post}
             />
-          ))}
-        </Col>
-      </Row>
-    </Container>
-  </Layout>
-)
+          </Col>
+
+          <Col className="justify-content-center">
+            {data.category.post.sort(compare).map(posts => (
+              <PostPreview
+                key={posts.id}
+                title={posts.title}
+                description={posts.shortDescription}
+                slug={`/doc/${data.category.slug}/${posts.slug}`}
+              />
+            ))}
+          </Col>
+        </Row>
+      </Container>
+    </Layout>
+  )
+}
 
 export default CategoryTemplate

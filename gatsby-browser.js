@@ -7,23 +7,22 @@
 // You can delete this file if you're not using it
 
 import React from "react"
-import { checkSession } from "./src/utils/auth"
+import { silentAuth } from "./src/utils/auth"
 
 class SessionCheck extends React.Component {
-  state = {
-    loading: true,
-  }
-
-  construct() {
-    this.handleCheckSession = this.handleCheckSession.bind(this)
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+    }
   }
 
   handleCheckSession = () => {
     this.setState({ loading: false })
   }
 
-  componentWillMount() {
-    checkSession(this.handleCheckSession)
+  componentDidMount() {
+    silentAuth(this.handleCheckSession)
   }
 
   render() {
@@ -36,5 +35,5 @@ class SessionCheck extends React.Component {
 }
 
 export const wrapRootElement = ({ element }) => {
-  return <React.Fragment>{element}</React.Fragment>
+  return <SessionCheck>{element}</SessionCheck>
 }

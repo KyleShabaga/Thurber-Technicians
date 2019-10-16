@@ -11,6 +11,7 @@ import InlineEmbeddedEntry from "../components/inlineEmbeddedEntry"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import SideTOC from "../components/SideTOC/sideTOC"
 import InlineHyperlink from "../components/InlineHyperlink/index"
+import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
 
 export const query = graphql`
   query($slug: String!) {
@@ -124,31 +125,39 @@ const options = {
   },
 }
 
-const PostTemplate = ({ data: { post }, location }) => (
-  <Layout location={location}>
-    <SEO title={post.title} />
-    <UnderNavDoc />
-    <Container className="mt-5 mb-2 pb-2">
-      <Row className="mb-5">
-        <Col md="auto" className='d-sm-none d-none d-md-block'>
-          <SideTOC
-            categorySlug={post.category.slug}
-            categoryTitle={post.category.title}
-            categoryPosts={post.category.post}
-          />
-        </Col>
+const PostTemplate = ({ data: { post }, location }) => {
+  if (!isAuthenticated()) {
+    login()
+    return <p>Redirecting to login...</p>
+  }
 
-        <Col>
-          <BreadCrumb
-            slug={`/doc/${post.category.slug}`}
-            currentPage={post.title}
-            category={post.category.title}
-          />
-          <div>{documentToReactComponents(post.body.json, options)}</div>
-        </Col>
-      </Row>
-    </Container>
-  </Layout>
-)
+  const user = getProfile()
 
+  return (
+    <Layout location={location}>
+      <SEO title={post.title} />
+      <UnderNavDoc />
+      <Container className="mt-5 mb-2 pb-2">
+        <Row className="mb-5">
+          <Col md="auto" className="d-sm-none d-none d-md-block">
+            <SideTOC
+              categorySlug={post.category.slug}
+              categoryTitle={post.category.title}
+              categoryPosts={post.category.post}
+            />
+          </Col>
+
+          <Col>
+            <BreadCrumb
+              slug={`/doc/${post.category.slug}`}
+              currentPage={post.title}
+              category={post.category.title}
+            />
+            <div>{documentToReactComponents(post.body.json, options)}</div>
+          </Col>
+        </Row>
+      </Container>
+    </Layout>
+  )
+}
 export default PostTemplate

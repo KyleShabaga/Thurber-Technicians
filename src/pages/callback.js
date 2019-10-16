@@ -1,7 +1,10 @@
 import React from "react"
+import { handleAuthentication } from "../utils/auth"
 
 const Callback = () => {
-  return <p>Callback Page</p>
+  handleAuthentication()
+
+  return <p>Loading...</p>
 }
 
 export default Callback
