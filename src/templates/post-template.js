@@ -11,7 +11,7 @@ import InlineEmbeddedEntry from "../components/inlineEmbeddedEntry"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import SideTOC from "../components/SideTOC/sideTOC"
 import InlineHyperlink from "../components/InlineHyperlink/index"
-import { login, isAuthenticated, getProfile } from "../utils/auth"
+import { login, isAuthenticated } from "../utils/auth"
 
 export const query = graphql`
   query($slug: String!) {
@@ -130,8 +130,6 @@ const PostTemplate = ({ data: { post }, location }) => {
     login()
     return <p>Redirecting to login...</p>
   }
-
-  const user = getProfile()
 
   return (
     <Layout location={location}>

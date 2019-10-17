@@ -1,14 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
 import logo from "../../images/logo.svg"
-import { Navbar, Nav, Button } from "react-bootstrap"
-import { IoIosSearch } from "react-icons/io"
+import { Navbar, Nav } from "react-bootstrap"
 import "./nav.css"
 import Loginsection from "./login"
-
-const searchIndices = [
-  { name: `Posts`, title: `Documentation`, hitComp: `PostHit` },
-]
 
 const MainNavbar = () => {
   return (

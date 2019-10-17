@@ -1,6 +1,6 @@
 import React from "react"
 import { Nav } from "react-bootstrap"
-import { login, logout, isAuthenticated, getProfile } from "../../utils/auth"
+import { login, logout, isAuthenticated } from "../../utils/auth"
 
 const LoginSection = () => {
   if (!isAuthenticated()) {

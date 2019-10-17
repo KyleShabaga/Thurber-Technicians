@@ -18,11 +18,6 @@ const Results = connectStateResults(
     res && res.nbHits > 0 ? children : `No results for '${state.query}'`
 )
 
-const Stats = connectStateResults(
-  ({ searchResults: res }) =>
-    res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
-)
-
 const useClickOutside = (ref, handler, events) => {
   if (!events) events = [`mousedown`, `touchstart`]
   const detectClickOutside = event =>

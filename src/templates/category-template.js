@@ -6,7 +6,7 @@ import Layout from "../layouts/index"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import SideTOC from "../components/SideTOC/sideTOC"
 import PostPreview from "../components/postpreview/postpreview"
-import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
+import { login, isAuthenticated } from "../utils/auth"
 import CategoryBreadCrumb from "../components/breadcrumb/category-breadcrumb"
 
 export const query = graphql`
@@ -42,8 +42,6 @@ const CategoryTemplate = ({ data, location }) => {
     login()
     return <p>Redirecting to login...</p>
   }
-
-  const user = getProfile()
 
   return (
     <Layout location={location}>

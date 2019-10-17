@@ -5,7 +5,7 @@ import Layout from "../layouts/index"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import { Container } from "react-bootstrap"
 import Search from "../components/search"
-import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
+import { login, isAuthenticated } from "../utils/auth"
 
 const searchIndices = [
   { name: `Posts`, title: `Documentation`, hitComp: `PostHit` },
@@ -16,8 +16,6 @@ const Documentation = ({ location }) => {
     login()
     return <p>Redirecting to login...</p>
   }
-
-  const user = getProfile()
 
   return (
     <Layout location={location}>
