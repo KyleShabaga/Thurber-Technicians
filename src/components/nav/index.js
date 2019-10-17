@@ -3,9 +3,12 @@ import { Link } from "gatsby"
 import logo from "../../images/logo.svg"
 import { Navbar, Nav, Button } from "react-bootstrap"
 import { IoIosSearch } from "react-icons/io"
-import {logout} from '../../utils/auth'
 import "./nav.css"
-import Loginsection from './login'
+import Loginsection from "./login"
+
+const searchIndices = [
+  { name: `Posts`, title: `Documentation`, hitComp: `PostHit` },
+]
 
 const MainNavbar = () => {
   return (
@@ -73,21 +76,8 @@ const MainNavbar = () => {
             </Link>
           </Nav.Link>
         </Nav>
-        <Nav className="">
-          {/* <Nav.Link
-            href="#logout"
-            onClick={e => {
-              logout()
-              e.preventDefault()
-            }}
-          >
-            Log out
-          </Nav.Link> */}
-          <Loginsection/>
-
-          <Button variant="outline-light" className="pt-0">
-            <IoIosSearch />
-          </Button>
+        <Nav>
+          <Loginsection />
         </Nav>
       </Navbar.Collapse>
     </Navbar>
