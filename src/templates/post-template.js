@@ -11,7 +11,7 @@ import InlineEmbeddedEntry from "../components/inlineEmbeddedEntry"
 import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import SideTOC from "../components/SideTOC/sideTOC"
 import InlineHyperlink from "../components/InlineHyperlink/index"
-import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
+import { login, isAuthenticated, getProfile } from "../utils/auth"
 
 export const query = graphql`
   query($slug: String!) {

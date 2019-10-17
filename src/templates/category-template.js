@@ -7,6 +7,7 @@ import UnderNavDoc from "../components/Undernav/UndernavDoc"
 import SideTOC from "../components/SideTOC/sideTOC"
 import PostPreview from "../components/postpreview/postpreview"
 import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
+import CategoryBreadCrumb from "../components/breadcrumb/category-breadcrumb"
 
 export const query = graphql`
   query($categoryslug: String!) {
@@ -59,6 +60,9 @@ const CategoryTemplate = ({ data, location }) => {
           </Col>
 
           <Col className="justify-content-center">
+            <CategoryBreadCrumb 
+              currentPage={data.category.title}
+            />
             {data.category.post.sort(compare).map(posts => (
               <PostPreview
                 key={posts.id}
